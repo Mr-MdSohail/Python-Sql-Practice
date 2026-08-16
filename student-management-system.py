@@ -9,14 +9,24 @@ class student:
         print("Marks (out of 600):",self.marks)
     def cal_percentage(self):
         percentage = self.marks/6
-        print(f"Percentage: {percentage}%")
         return percentage
     def pass_fail(self):
-        percentage = self.marks/6
-        if percentage>30:
+        if self.cal_percentage()>30:
             print(f"{self.name} has passed!")
         else:
             print(f"{self.name} has failed")
+    def grade(self):
+        percentage = self.marks/6
+        if percentage>=90:
+            print("Grade A")
+        elif percentage>=75:
+            print("Grade B")
+        elif percentage>=60:
+            print("Grade C")
+        elif percentage>=40:
+            print("Grade D")
+        else:
+            print("Grade F")
 students = [
     student('rohan',23,300),
     student('mohan',24,400),
@@ -26,9 +36,14 @@ students = [
 ]
 for s in students:
     s.details()
+    percentage = s.cal_percentage()
+    print(s.name, percentage)
+    s.pass_fail()
+    s.grade()
     print("")
 topper = students[0]
 for s in students:
     if s.marks>topper.marks:
         topper=s
-topper.details()
+print("Topper Details: ")
+topper.details()    
