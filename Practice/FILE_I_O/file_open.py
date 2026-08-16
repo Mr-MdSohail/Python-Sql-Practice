@@ -1,6 +1,0 @@
-f=open("data.txt","r")
-data=f.read()
-print(data)
-f.seek(0)
-ok = f.read(4)
-print(ok)
