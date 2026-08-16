@@ -1,0 +1,10 @@
+from PIL import Image
+img = Image.open("C:/Users/moham/OneDrive/Desktop/Python/Projects/SPIDERMAN.jpg")
+print(img)
+print(img.size) 
+print(img.height)
+print(img.width)
+print(img.format)
+print(img.mode)
+new_img=img.resize((3840,2160))
+new_img.save("C:/Users/moham/OneDrive/Desktop/Python/Projects/newimg.jpg")
