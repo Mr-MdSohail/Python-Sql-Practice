@@ -3,6 +3,12 @@ class student:
         self.name = name
         self.roll_no=roll_no
         self.marks=marks
+        while self.marks<0 or self.marks>600:
+            print(f"For student {self.name}, Student total marks cannot be greater than 600")
+            user_marks=int(input(f"Enter valid marks for {self.name}: "))
+            self.marks=user_marks
+            if 0<=self.marks<=600:
+                break
     def details(self):
         print("Name:",self.name)
         print("Roll number:",self.roll_no)
@@ -33,7 +39,7 @@ students = [
     student('mohan',24,400),
     student('rahul',28,500),
     student('joy',26,250),
-    student('elsa',20,600)
+    student('elsa',20,6000)
 ]
 while True:
     num=int(input("Which action you wanna perform?\n1. Add Student\n2. Remove Student\n3. Search Student\n4. Display All Students\n5. Exit\n"))
