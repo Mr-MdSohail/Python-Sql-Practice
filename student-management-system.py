@@ -27,23 +27,61 @@ class student:
             print("Grade D")
         else:
             print("Grade F")
+
 students = [
     student('rohan',23,300),
     student('mohan',24,400),
-    student('rahul',24,500),
-    student('joy',24,250),
-    student('elsa',24,600)
+    student('rahul',28,500),
+    student('joy',26,250),
+    student('elsa',20,600)
 ]
-for s in students:
-    s.details()
-    percentage = s.cal_percentage()
-    print(s.name, percentage)
-    s.pass_fail()
-    s.grade()
-    print("")
-topper = students[0]
-for s in students:
-    if s.marks>topper.marks:
-        topper=s
-print("Topper Details: ")
-topper.details()    
+while True:
+    num=int(input("Which action you wanna perform?\n1. Add Student\n2. Remove Student\n3. Search Student\n4. Display All Students\n5. Exit\n"))
+    if 1<=num<=5:
+        if num == 1:
+            print("Enter details of student you wanna add:")
+            new_name=input("Enter student name: ")
+            new_roll=int(input("Enter student roll number: "))
+            new_marks=int(input("Enter student marks: "))
+            new_student = student(new_name,new_roll,new_marks)
+            students.append(new_student)
+            print("Student added successfully!")
+            for s in students:
+                s.details()
+
+        elif num ==2:
+            remove_roll = int(input("Enter the roll number of student you wanna remove:"))
+            found2 = False
+            for s in students:
+                if remove_roll==s.roll_no:
+                    students.remove(s)
+                    found2=True
+                    print("student removed successfully")
+                    for s in students:
+                        s.details()
+                    break
+            if not found2:
+                print("Student not found!")
+
+        elif num==3:
+            search_num=int(input(("Enter the roll number of student you wanna search for:\n")))
+            found3=False
+            for s in students:
+                if search_num==s.roll_no:
+                    print("Heres the details of student you searched for:")
+                    s.details()
+                    found3=True
+                    break
+            if not found3:
+                print("Student not found!")
+
+        elif num==4:
+            for s in students:
+                s.details()
+
+        elif num==5:
+            print("Program Ended.")
+            break
+
+    else:
+        print("Please enter a valid action number")
